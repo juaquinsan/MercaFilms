@@ -1,4 +1,4 @@
-package com.joaquin.mercafilms.data.adapters
+package com.joaquin.mercafilms.domain.adapters
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,12 +6,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.joaquin.mercafilms.R
-import com.joaquin.mercafilms.data.adapters.iterfaces.RecyclerViewFilmListener
-import com.joaquin.mercafilms.data.models.FilmApiResponse
+import com.joaquin.mercafilms.domain.iterfaces.RecyclerViewFilmListener
+import com.joaquin.mercafilms.domain.models.Film
 import com.joaquin.mercafilms.utils.inflate
 import com.joaquin.mercafilms.utils.loadByUrl
 
-class FilmsAdapter (private val films: ArrayList<FilmApiResponse>,
+class FilmsAdapter (private val films: List<Film>,
                     private val listener: RecyclerViewFilmListener) :
     RecyclerView.Adapter<FilmsAdapter.ViewHolder>() {
 
@@ -25,7 +25,7 @@ class FilmsAdapter (private val films: ArrayList<FilmApiResponse>,
     override fun getItemCount(): Int = films.size
 
     class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind (film: FilmApiResponse,
+        fun bind (film: Film,
                   listener: RecyclerViewFilmListener
         ) = with(itemView) {
             val imageViewFilm = findViewById<ImageView>(R.id.imageViewFilm)

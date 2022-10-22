@@ -2,17 +2,19 @@ package com.joaquin.mercafilms.ui.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.joaquin.mercafilms.data.adapters.FilmsAdapter
-import com.joaquin.mercafilms.data.adapters.iterfaces.RecyclerViewFilmListener
-import com.joaquin.mercafilms.data.models.FilmApiResponse
+import com.joaquin.mercafilms.R
 import com.joaquin.mercafilms.databinding.ActivityMainBinding
+import com.joaquin.mercafilms.domain.adapters.FilmsAdapter
+import com.joaquin.mercafilms.domain.iterfaces.RecyclerViewFilmListener
+import com.joaquin.mercafilms.domain.models.Film
 import com.joaquin.mercafilms.ui.viewmodels.FilmsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,11 +30,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar.root)
+
         filmsViewModel.onCreate()
 
         filmsViewModel.allFilmsModel.observe(this) {
 
-            if (it.size > 0) {
+            if (it.isNotEmpty()) {
                 // They are films to show
                 binding.recyclerViewFilms.visibility = View.VISIBLE
                 binding.layoutNoFilms.visibility = View.GONE
@@ -43,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
                 val filmsAdapter : FilmsAdapter = FilmsAdapter(it,
                     object : RecyclerViewFilmListener {
-                        override fun onClick(film: FilmApiResponse, position: Int) {
+                        override fun onClick(film: Film, position: Int) {
                             goToDetailActivity(film.id)
                         }
                     })
@@ -61,6 +65,29 @@ class MainActivity : AppCompatActivity() {
          */
         filmsViewModel.dataIsLoading.observe(this) {
             binding.progressBarLoadingContent.isVisible = it
+        }
+    }
+
+    /*
+        Menu options
+     */
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main_activity, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_delete_all -> {
+                filmsViewModel.deleteAllFilms()
+                true
+            }
+            R.id.menu_update -> {
+                filmsViewModel.deleteAllFilms()
+                filmsViewModel.onCreate()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

@@ -2,12 +2,12 @@
     <string name="app_name">MercaFilms</string>
 
     <!-- Main Activity -->
-    <string name="msgNoItems">No films to show, please try again or check your internet connection</string>
+    <string name="msgNoItems">No films to show, please update the database or check your internet connection</string>
     <string name="moreInfoString">More information</string>
     <string name="imageDescription">Film thumbnail</string>
 
     <!-- Detail Activity -->
-    <string name="filmInformationString">Film information</string>
+    <string name="filmInformationString">Film description</string>
     <string name="errorGetFilmInfo">No info to show, please try again or check your internet connection</string>
     <string name="originalTitleString">Original title:</string>
     <string name="directorString">Director:</string>
@@ -15,4 +15,19 @@
     <string name="releaseDateString">Release date:</string>
     <string name="scoreString">Score:</string>
     <string name="missingInformation">N/A</string>
+    <string name="editDataInformationMessage">You are editing the film information</string>
+
+    <!-- Menu -->
+    <string name="menuDeleteAll">Delete all</string>
+    <string name="menuUpdate">Update database</string>
+    <string name="menuEditInformation">Edit</string>
+    <string name="menuSaveChanges">Save changes</string>
+    <string name="menuDiscardChanges">Discard changes</string>
+
+    <!-- Alert Dialog -->
+    <string name="alertDialogEditTitle">MercaFilms Alert</string>
+    <string name="alertDialogEditMessage">Your are editing the film information. If you leave this page, you lose your changes. Do you want to exit?</string>
+    <string name="alertDialogEditPossitiveButton">Yes</string>
+    <string name="alertDialogEditNegativeButton">No</string>
+
 </resources>

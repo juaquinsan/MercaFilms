@@ -1,269 +1,342 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.views.DetailActivity">
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutFilmInfo"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8.5"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.views.DetailActivity">
 
-        <ImageView
-            android:id="@+id/imageViewFilm"
-            android:layout_width="120dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:contentDescription="@string/imageDescription"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:textAllCaps="true"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
-            app:layout_constraintTop_toTopOf="@+id/imageViewFilm" />
-
-        <TextView
-            android:id="@+id/textViewOriginalTitleWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/originalTitleString"
-            app:layout_constraintStart_toStartOf="@+id/textViewTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
-
-        <TextView
-            android:id="@+id/textViewOriginalTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/missingInformation"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewOriginalTitleWord"
-            app:layout_constraintStart_toEndOf="@+id/textViewOriginalTitleWord"
-            app:layout_constraintTop_toTopOf="@+id/textViewOriginalTitleWord" />
-
-        <TextView
-            android:id="@+id/textViewDirectorWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/directorString"
-            app:layout_constraintStart_toStartOf="@+id/textViewOriginalTitleWord"
-            app:layout_constraintTop_toBottomOf="@+id/textViewOriginalTitleWord" />
-
-        <TextView
-            android:id="@+id/textViewDirector"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/missingInformation"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewDirectorWord"
-            app:layout_constraintStart_toEndOf="@+id/textViewDirectorWord"
-            app:layout_constraintTop_toTopOf="@+id/textViewDirectorWord" />
-
-        <TextView
-            android:id="@+id/textViewProducerWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/producerString"
-            app:layout_constraintStart_toStartOf="@+id/textViewDirectorWord"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDirectorWord" />
-
-        <TextView
-            android:id="@+id/textViewProducer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/missingInformation"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewProducerWord"
-            app:layout_constraintStart_toEndOf="@+id/textViewProducerWord"
-            app:layout_constraintTop_toTopOf="@+id/textViewProducerWord" />
-
-        <TextView
-            android:id="@+id/textViewReleaseDateWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/releaseDateString"
-            app:layout_constraintStart_toStartOf="@+id/textViewProducerWord"
-            app:layout_constraintTop_toBottomOf="@+id/textViewProducerWord" />
-
-        <TextView
-            android:id="@+id/textViewReleaseDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/missingInformation"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewReleaseDateWord"
-            app:layout_constraintStart_toEndOf="@+id/textViewReleaseDateWord"
-            app:layout_constraintTop_toTopOf="@+id/textViewReleaseDateWord"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/textViewScoreWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/scoreString"
-            app:layout_constraintStart_toStartOf="@+id/textViewReleaseDateWord"
-            app:layout_constraintTop_toBottomOf="@+id/textViewReleaseDateWord" />
-
-        <TextView
-            android:id="@+id/textViewScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/missingInformation"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewScoreWord"
-            app:layout_constraintStart_toEndOf="@+id/textViewScoreWord"
-            app:layout_constraintTop_toTopOf="@+id/textViewScoreWord" />
-
-        <TextView
-            android:id="@+id/textViewFilmDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:ellipsize="end"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutFilmInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8.5"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewInformation" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textViewInformation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/filmInformationString"
-            android:textStyle="bold"
+            <TextView
+                android:id="@+id/textViewEditInformationMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_700"
+                android:paddingBottom="5dp"
+                android:text="@string/editDataInformationMessage"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:paddingTop="5dp" />
+
+            <ImageView
+                android:id="@+id/imageViewFilm"
+                android:layout_width="120dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/imageDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEditInformationMessage" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
+                app:layout_constraintTop_toTopOf="@+id/imageViewFilm" />
+
+            <EditText
+                android:id="@+id/editTextTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
+                app:layout_constraintTop_toTopOf="@+id/imageViewFilm" />
+
+            <TextView
+                android:id="@+id/textViewOriginalTitleWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/originalTitleString"
+                app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+            <TextView
+                android:id="@+id/textViewOriginalTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/missingInformation"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewOriginalTitleWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewOriginalTitleWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewOriginalTitleWord" />
+
+            <EditText
+                android:id="@+id/editTextOriginalTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewOriginalTitleWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewOriginalTitleWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewOriginalTitleWord" />
+
+            <TextView
+                android:id="@+id/textViewDirectorWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/directorString"
+                app:layout_constraintStart_toStartOf="@+id/textViewOriginalTitleWord"
+                app:layout_constraintTop_toBottomOf="@+id/textViewOriginalTitleWord" />
+
+            <TextView
+                android:id="@+id/textViewDirector"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/missingInformation"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewDirectorWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewDirectorWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewDirectorWord" />
+
+            <EditText
+                android:id="@+id/editTextDirector"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewDirectorWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewDirectorWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewDirectorWord" />
+
+            <TextView
+                android:id="@+id/textViewProducerWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/producerString"
+                app:layout_constraintStart_toStartOf="@+id/textViewDirectorWord"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDirectorWord" />
+
+            <TextView
+                android:id="@+id/textViewProducer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/missingInformation"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewProducerWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewProducerWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewProducerWord" />
+
+            <EditText
+                android:id="@+id/editTextProducer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewProducerWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewProducerWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewProducerWord" />
+
+            <TextView
+                android:id="@+id/textViewReleaseDateWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/releaseDateString"
+                app:layout_constraintStart_toStartOf="@+id/textViewProducerWord"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProducerWord" />
+
+            <TextView
+                android:id="@+id/textViewReleaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/missingInformation"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewReleaseDateWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewReleaseDateWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewReleaseDateWord"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/editTextReleaseDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="number"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewReleaseDateWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewReleaseDateWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewReleaseDateWord" />
+
+            <TextView
+                android:id="@+id/textViewScoreWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/scoreString"
+                app:layout_constraintStart_toStartOf="@+id/textViewReleaseDateWord"
+                app:layout_constraintTop_toBottomOf="@+id/textViewReleaseDateWord" />
+
+            <TextView
+                android:id="@+id/textViewScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/missingInformation"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewScoreWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewScoreWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewScoreWord" />
+
+            <EditText
+                android:id="@+id/editTextScore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="number"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewScoreWord"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewScoreWord"
+                app:layout_constraintTop_toTopOf="@+id/textViewScoreWord" />
+
+            <TextView
+                android:id="@+id/textViewInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/filmInformationString"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewFilm" />
+
+            <TextView
+                android:id="@+id/textViewFilmDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewInformation" />
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewInformation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutNoFilmInfo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8.5"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewFilm" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!--
-        <TextView
-            android:id="@+id/textViewComics"
+            <TextView
+                android:id="@+id/textViewNoItems"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/errorGetFilmInfo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/noitems"
+                app:layout_constraintBottom_toTopOf="@+id/textViewNoItems"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarLoadingContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/comicString"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewInformation" />
-
-        <TextView
-            android:id="@+id/textViewSeries"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/seriesString"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewComics" />
-
-        <TextView
-            android:id="@+id/textViewStories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/storiesString"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSeries" />
-
-        <TextView
-            android:id="@+id/textViewComicsCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewComics"
-            app:layout_constraintStart_toEndOf="@+id/textViewComics"
-            app:layout_constraintTop_toTopOf="@+id/textViewComics" />
-
-        <TextView
-            android:id="@+id/textViewSeriesCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            app:layout_constraintStart_toEndOf="@+id/textViewSeries"
-            app:layout_constraintTop_toTopOf="@+id/textViewSeries" />
-
-        <TextView
-            android:id="@+id/textViewStoriesCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewStories"
-            app:layout_constraintStart_toEndOf="@+id/textViewStories"
-            app:layout_constraintTop_toTopOf="@+id/textViewStories" />
-
-        -->
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutNoFilmInfo"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8.5"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textViewNoItems"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/errorGetFilmInfo"
+            android:indeterminateTint="@color/purple_700"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/noitems"
-            app:layout_constraintBottom_toTopOf="@+id/textViewNoItems"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBarLoadingContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateTint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

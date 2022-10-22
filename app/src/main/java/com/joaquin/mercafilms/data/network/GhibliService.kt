@@ -13,10 +13,10 @@ class GhibliService @Inject constructor (
     /*
         Retrofit API call all films
      */
-    suspend fun getAllFilms() : ArrayList<FilmApiResponse> {
+    suspend fun getAllFilms() : List<FilmApiResponse> {
         return withContext(Dispatchers.IO) {
             val response : Response<ArrayList<FilmApiResponse>> = ghibliAPI.getAllFilms()
-            response.body() ?: ArrayList<FilmApiResponse>()
+            response.body() ?: emptyList()
         }
     }
 
@@ -28,9 +28,7 @@ class GhibliService @Inject constructor (
             val response : Response<FilmApiResponse> = ghibliAPI.getFilmInfoById(id)
             response.body() ?: FilmApiResponse("", "", "",
                 "", "", "", "", "",
-                "",0, 0, 0,
-                ArrayList(), ArrayList(), ArrayList(), ArrayList(),
-                "")
+                "",0, 0, 0, "")
         }
     }
 }
