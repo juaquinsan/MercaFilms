@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">MercaFilms</string>
+
+    <!-- Main Activity -->
+    <string name="msgNoItems">No films to show, please try again or check your internet connection</string>
+    <string name="moreInfoString">More information</string>
+    <string name="imageDescription">Film thumbnail</string>
+
+    <!-- Detail Activity -->
+    <string name="filmInformationString">Film information</string>
+    <string name="errorGetFilmInfo">No info to show, please try again or check your internet connection</string>
+    <string name="originalTitleString">Original title:</string>
+    <string name="directorString">Director:</string>
+    <string name="producerString">Producer:</string>
+    <string name="releaseDateString">Release date:</string>
+    <string name="scoreString">Score:</string>
+    <string name="missingInformation">N/A</string>
 </resources>
