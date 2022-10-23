@@ -3,7 +3,6 @@ package com.joaquin.mercafilms.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.joaquin.mercafilms.data.models.FilmApiResponse
 import com.joaquin.mercafilms.domain.DeleteAllFilmsUseCase
 import com.joaquin.mercafilms.domain.GetAllFilmsUseCase
 import com.joaquin.mercafilms.domain.GetFilmByIdUseCase
@@ -48,7 +47,7 @@ class FilmsViewModel @Inject constructor (
         Call to one film by ID use case
      */
     fun filmInfo(id : String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             dataIsLoading.postValue(true)
             val result : Film = getFilmByIdUseCase(id)
 
@@ -63,9 +62,9 @@ class FilmsViewModel @Inject constructor (
     fun deleteAllFilms() {
         viewModelScope.launch(Dispatchers.IO) {
             dataIsLoading.postValue(true)
-            deleteAllFilmsUseCase()
+            val result : List<Film> = deleteAllFilmsUseCase()
 
-            allFilmsModel.postValue(emptyList())
+            allFilmsModel.postValue(result)
             dataIsLoading.postValue(false)
         }
     }
