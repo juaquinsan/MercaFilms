@@ -2,6 +2,7 @@ package com.joaquin.mercafilms.ui.views
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -35,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         filmsViewModel.onCreate()
 
         filmsViewModel.allFilmsModel.observe(this) {
-
             if (it.isNotEmpty()) {
                 // They are films to show
                 binding.recyclerViewFilms.visibility = View.VISIBLE
@@ -95,9 +95,11 @@ class MainActivity : AppCompatActivity() {
         Go to DetailActivity passing film information selected (ID)
      */
     private fun goToDetailActivity(filmID: String) {
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("filmid", filmID)
-        startActivity(intent)
-        finish()
+        if (filmID != "") {
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("filmid", filmID)
+            startActivity(intent)
+            finish()
+        }
     }
 }
