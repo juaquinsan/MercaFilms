@@ -66,7 +66,7 @@
             android:id="@+id/progressBarLoadingContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateTint="@color/purple_700"
+            android:indeterminateTint="@color/green_700"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

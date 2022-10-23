@@ -3,10 +3,7 @@ package com.joaquin.mercafilms.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.joaquin.mercafilms.domain.DeleteAllFilmsUseCase
-import com.joaquin.mercafilms.domain.GetAllFilmsUseCase
-import com.joaquin.mercafilms.domain.GetFilmByIdUseCase
-import com.joaquin.mercafilms.domain.UpdateFilmUseCase
+import com.joaquin.mercafilms.domain.*
 import com.joaquin.mercafilms.domain.models.Film
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +15,7 @@ class FilmsViewModel @Inject constructor (
     private val getAllFilmsUseCase : GetAllFilmsUseCase,
     private val getFilmByIdUseCase : GetFilmByIdUseCase,
     private val deleteAllFilmsUseCase: DeleteAllFilmsUseCase,
+    private val deleteFilmByIdUseCase: DeleteFilmByIdUseCase,
     private val updateFilmUseCase: UpdateFilmUseCase
     ) : ViewModel() {
 
@@ -57,7 +55,7 @@ class FilmsViewModel @Inject constructor (
     }
 
     /*
-        Delete all films from database
+        Delete all films database
      */
     fun deleteAllFilms() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -65,6 +63,17 @@ class FilmsViewModel @Inject constructor (
             val result : List<Film> = deleteAllFilmsUseCase()
 
             allFilmsModel.postValue(result)
+            dataIsLoading.postValue(false)
+        }
+    }
+
+    /*
+        Delete film by id database
+     */
+    fun deleteFilmById(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dataIsLoading.postValue(true)
+            deleteFilmByIdUseCase(id)
             dataIsLoading.postValue(false)
         }
     }

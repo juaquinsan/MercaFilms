@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.5476804123711341" />
+        <entry key="app/src/main/res/layout-large/activity_detail.xml" value="0.2535271483539974" />
+        <entry key="app/src/main/res/layout-large/card_film.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-normal/activity_detail.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/layout-normal/card_film.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-small/card_film.xml" value="0.2511013215859031" />
+        <entry key="app/src/main/res/layout-xlarge/activity_detail.xml" value="0.5" />
+        <entry key="app/src/main/res/layout-xlarge/card_film.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/card_film.xml" value="0.18406729341909944" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/card_film.xml" value="0.29074074074074074" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/menu_detail_activity.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/menu_main_activity.xml" value="0.30885416666666665" />

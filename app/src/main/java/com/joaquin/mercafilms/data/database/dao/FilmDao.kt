@@ -25,4 +25,7 @@ interface FilmDao {
 
     @Query("DELETE FROM film_table")
     suspend fun deleteAllFilms()
+
+    @Query("DELETE FROM film_table WHERE id = (:id)")
+    suspend fun deleteFilmById(id: String)
 }

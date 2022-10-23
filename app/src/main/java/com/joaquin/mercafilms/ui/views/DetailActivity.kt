@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.get
@@ -35,6 +36,32 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar.root)
 
         /*
+            Check editing mode
+         */
+        if (savedInstanceState != null) {
+            isEditingMode = savedInstanceState.getBoolean(getString(R.string.StateEditingMode))
+            if (isEditingMode) {
+                startEditFields()
+
+                // Restore edittext information
+                binding.editTextTitle.setText(savedInstanceState.getString(
+                    getString(R.string.StateETTitle)))
+                binding.editTextOriginalTitle.setText(savedInstanceState.getString(
+                    getString(R.string.StateETOriginalTitle)))
+                binding.editTextDirector.setText(savedInstanceState.getString(
+                    getString(R.string.StateETDirector)))
+                binding.editTextProducer.setText(savedInstanceState.getString(
+                    getString(R.string.StateETProducer)))
+                binding.editTextReleaseDate.setText(savedInstanceState.getString(
+                    getString(R.string.StateETReleaseDate)))
+                binding.editTextScore.setText(savedInstanceState.getString(
+                    getString(R.string.StateETScore)))
+                binding.editTextDescription.setText(savedInstanceState.getString(
+                    getString(R.string.StateETDescription)))
+            }
+        }
+
+        /*
             Get film selected from intent (ID)
          */
         filmID = intent.getStringExtra("filmid").toString()
@@ -48,21 +75,22 @@ class DetailActivity : AppCompatActivity() {
                 binding.layoutFilmInfo.visibility = View.VISIBLE
                 binding.layoutNoFilmInfo.visibility = View.GONE
 
+                // Only the edittext information is set when edit mode is false to avoid
+                // loosing information when rotating the screen
+                if (!isEditingMode) {
+                    binding.editTextTitle.setText(it.title)
+                    binding.editTextOriginalTitle.setText(it.original_title)
+                    binding.editTextDirector.setText(it.director)
+                    binding.editTextProducer.setText(it.producer)
+                    binding.editTextReleaseDate.setText("${it.release_date}")
+                    binding.editTextScore.setText("${it.rt_score}")
+                    binding.editTextDescription.setText(it.description)
+                }
+
                 binding.imageViewFilm.loadByUrl(it.image)
-                binding.textViewTitle.text = it.title
-                binding.editTextTitle.setText(it.title)
-                binding.textViewOriginalTitle.text = it.original_title
-                binding.editTextOriginalTitle.setText(it.original_title)
-                binding.textViewDirector.text = it.director
-                binding.editTextDirector.setText(it.director)
-                binding.textViewProducer.text = it.producer
-                binding.editTextProducer.setText(it.producer)
-                binding.textViewReleaseDate.text = "${it.release_date}"
-                binding.editTextReleaseDate.setText("${it.release_date}")
-                binding.textViewScore.text = "${it.rt_score}/100"
-                binding.editTextScore.setText("${it.rt_score}".split("/")[0])
-                binding.textViewFilmDescription.text = it.description
-                binding.editTextDescription.setText(it.description)
+
+                // Use databinding with textview
+                binding.film = it
             } else {
                 // An error occurs to show film's info
                 binding.layoutFilmInfo.visibility = View.GONE
@@ -75,14 +103,37 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // Save editing mode state
+        outState.putBoolean(getString(R.string.StateEditingMode), isEditingMode)
+        // Save edittext information modified
+        outState.putString(getString(R.string.StateETTitle),
+            binding.editTextTitle.text.toString())
+        outState.putString(getString(R.string.StateETOriginalTitle),
+            binding.editTextOriginalTitle.text.toString())
+        outState.putString(getString(R.string.StateETDirector),
+            binding.editTextDirector.text.toString())
+        outState.putString(getString(R.string.StateETProducer),
+            binding.editTextProducer.text.toString())
+        outState.putString(getString(R.string.StateETReleaseDate),
+            binding.editTextReleaseDate.text.toString())
+        outState.putString(getString(R.string.StateETScore),
+            binding.editTextScore.text.toString())
+        outState.putString(getString(R.string.StateETDescription),
+            binding.editTextDescription.text.toString())
+    }
+
     /*
         Menu options
      */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detail_activity, menu)
+
         if (menu != null) {
             this.menu = menu
+            checkItemMenuVisiblity(menu)
         }
-        menuInflater.inflate(R.menu.menu_detail_activity, menu)
         return true
     }
 
@@ -90,65 +141,51 @@ class DetailActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.menu_edit_information -> {
                 isEditingMode = true
-                // Set visibility to item menu
-                // Edit menu
-                menu[0].isVisible = false
-                // Confirm menu
-                menu[1].isVisible = true
-                menu[2].isVisible = true
-
-                // Show edit warning information
-                binding.textViewEditInformationMessage.visibility = View.VISIBLE
-
+                checkItemMenuVisiblity(menu)
                 startEditFields()
                 true
             }
+            R.id.menu_delete_film -> {
+                showConfirmDeleteFilmAlertDialog()
+                true
+            }
             R.id.menu_save_changes -> {
-                isEditingMode = false
-                // Hide edit warning information
-                binding.textViewEditInformationMessage.visibility = View.GONE
-                // Set visitiblity to item menu
-                // Edit menu
-                menu[0].isVisible = true
-                // Confirm menu
-                menu[1].isVisible = false
-                menu[2].isVisible = false
+                if (binding.editTextScore.text.toString().toInt() <= 100) {
 
-                // Update fields
-                binding.textViewTitle.text = binding.editTextTitle.text.toString()
-                binding.textViewOriginalTitle.text = binding.editTextOriginalTitle.text.toString()
-                binding.textViewDirector.text = binding.editTextDirector.text.toString()
-                binding.textViewProducer.text = binding.editTextProducer.text.toString()
-                binding.textViewReleaseDate.text = binding.editTextReleaseDate.text.toString()
-                binding.textViewScore.text =  binding.editTextScore.text.toString() + "/100"
-                binding.textViewFilmDescription.text = binding.editTextDescription.text.toString()
+                    isEditingMode = false
+                    // Update fields
+                    binding.textViewTitle.text = binding.editTextTitle.text.toString()
+                    binding.textViewOriginalTitle.text =
+                        binding.editTextOriginalTitle.text.toString()
+                    binding.textViewDirector.text = binding.editTextDirector.text.toString()
+                    binding.textViewProducer.text = binding.editTextProducer.text.toString()
+                    binding.textViewReleaseDate.text = binding.editTextReleaseDate.text.toString()
+                    binding.textViewScore.text = binding.editTextScore.text.toString()
+                    binding.textViewFilmDescription.text =
+                        binding.editTextDescription.text.toString()
 
-                // Update database
-                filmsViewModel.updateFilmInformation(
-                    filmID,
-                    binding.textViewTitle.text.toString(),
-                    binding.textViewOriginalTitle.text.toString(),
-                    binding.textViewFilmDescription.text.toString(),
-                    binding.textViewDirector.text.toString(),
-                    binding.textViewProducer.text.toString(),
-                    binding.textViewReleaseDate.text.toString().toInt(),
-                    binding.textViewScore.text.toString().split("/")[0].toInt()
-                )
+                    // Update database
+                    filmsViewModel.updateFilmInformation(
+                        filmID,
+                        binding.textViewTitle.text.toString(),
+                        binding.textViewOriginalTitle.text.toString(),
+                        binding.textViewFilmDescription.text.toString(),
+                        binding.textViewDirector.text.toString(),
+                        binding.textViewProducer.text.toString(),
+                        binding.textViewReleaseDate.text.toString().toInt(),
+                        binding.textViewScore.text.toString().toInt()
+                    )
 
-                finishEditFields()
+                    checkItemMenuVisiblity(menu)
+                    finishEditFields()
+                } else {
+                    Toast.makeText(this, getString(R.string.invalidScoreValueMessage),
+                        Toast.LENGTH_LONG).show()
+                }
                 true
             }
             R.id.menu_discard_changes -> {
                 isEditingMode = false
-                // Hide edit warning information
-                binding.textViewEditInformationMessage.visibility = View.GONE
-                // Set visitiblity to item menu
-                // Edit menu
-                menu[0].isVisible = true
-                // Confirm menu
-                menu[1].isVisible = false
-                menu[2].isVisible = false
-
                 // Set all textview information into edittext ("Reset" information)
                 binding.editTextTitle.setText(binding.textViewTitle.text)
                 binding.editTextOriginalTitle.setText(binding.textViewOriginalTitle.text)
@@ -158,6 +195,7 @@ class DetailActivity : AppCompatActivity() {
                 binding.editTextScore.setText(binding.textViewScore.text)
                 binding.editTextDescription.setText(binding.textViewFilmDescription.text)
 
+                checkItemMenuVisiblity(menu)
                 finishEditFields()
                 true
             }
@@ -165,34 +203,63 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    fun checkItemMenuVisiblity(menu: Menu) {
+        if (isEditingMode) {
+            // Set visibility to item menu
+            // Edit menu
+            menu[0].isVisible = false
+            // Delete menu
+            menu[1].isVisible = false
+            // Confirm menu
+            menu[2].isVisible = true
+            menu[3].isVisible = true
+        } else {
+            // Set visitiblity to item menu
+            // Edit menu
+            menu[0].isVisible = true
+            // Delete menu
+            menu[1].isVisible = true
+            // Confirm menu
+            menu[2].isVisible = false
+            menu[3].isVisible = false
+        }
+    }
+
     /*
         Manage visibility from fields
      */
     fun startEditFields() {
+        // Show edit warning information
+        binding.textViewEditInformationMessage.visibility = View.VISIBLE
+
         // Hide textview and show edittext
         binding.textViewTitle.visibility = View.INVISIBLE
         binding.editTextTitle.visibility = View.VISIBLE
 
-        binding.textViewOriginalTitle.visibility = View.GONE
+        binding.textViewOriginalTitle.visibility = View.INVISIBLE
         binding.editTextOriginalTitle.visibility = View.VISIBLE
 
-        binding.textViewDirector.visibility = View.GONE
+        binding.textViewDirector.visibility = View.INVISIBLE
         binding.editTextDirector.visibility = View.VISIBLE
 
-        binding.textViewProducer.visibility = View.GONE
+        binding.textViewProducer.visibility = View.INVISIBLE
         binding.editTextProducer.visibility = View.VISIBLE
 
-        binding.textViewReleaseDate.visibility = View.GONE
+        binding.textViewReleaseDate.visibility = View.INVISIBLE
         binding.editTextReleaseDate.visibility = View.VISIBLE
 
-        binding.textViewScore.visibility = View.GONE
+        binding.textViewScore.visibility = View.INVISIBLE
+        binding.textViewPercentScoreMax.visibility = View.INVISIBLE
         binding.editTextScore.visibility = View.VISIBLE
 
-        binding.textViewFilmDescription.visibility = View.GONE
+        binding.textViewFilmDescription.visibility = View.INVISIBLE
         binding.editTextDescription.visibility = View.VISIBLE
     }
 
     fun finishEditFields() {
+        // Hide edit warning information
+        binding.textViewEditInformationMessage.visibility = View.GONE
+
         // Hide all edittext and shows the textview
         binding.textViewTitle.visibility = View.VISIBLE
         binding.editTextTitle.visibility = View.GONE
@@ -210,10 +277,28 @@ class DetailActivity : AppCompatActivity() {
         binding.editTextReleaseDate.visibility = View.GONE
 
         binding.textViewScore.visibility = View.VISIBLE
+        binding.textViewPercentScoreMax.visibility = View.VISIBLE
         binding.editTextScore.visibility = View.GONE
 
         binding.textViewFilmDescription.visibility = View.VISIBLE
         binding.editTextDescription.visibility = View.GONE
+    }
+
+    private fun showConfirmDeleteFilmAlertDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.alertDialogEditTitle)
+        builder.setMessage(R.string.alertDialogDeleteFilmMessage)
+
+        builder.setPositiveButton(R.string.alertDialogEditPossitiveButton) { dialog, which ->
+            filmsViewModel.deleteFilmById(filmID)
+            goToActivity<MainActivity>()
+            finish()
+        }
+
+        builder.setNegativeButton(R.string.alertDialogEditNegativeButton) { dialog, which ->
+        }
+
+        builder.show()
     }
 
     private fun showConfirmAlertDialog() {

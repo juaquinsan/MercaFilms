@@ -2,10 +2,9 @@ package com.joaquin.mercafilms.domain.adapters
 
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.joaquin.mercafilms.R
+import com.joaquin.mercafilms.databinding.CardFilmBinding
 import com.joaquin.mercafilms.domain.iterfaces.RecyclerViewFilmListener
 import com.joaquin.mercafilms.domain.models.Film
 import com.joaquin.mercafilms.utils.inflate
@@ -28,14 +27,21 @@ class FilmsAdapter (private val films: List<Film>,
         fun bind (film: Film,
                   listener: RecyclerViewFilmListener
         ) = with(itemView) {
-            val imageViewFilm = findViewById<ImageView>(R.id.imageViewFilm)
-            val textViewTitle = findViewById<TextView>(R.id.textViewFilTitle)
-            val textViewDescription = findViewById<TextView>(R.id.textViewFilmDescription)
+            val binding = CardFilmBinding.bind(itemView)
 
-            imageViewFilm.loadByUrl(film.image)
+            binding.imageViewFilm.loadByUrl(film.image)
 
-            textViewTitle.text = film.title
-            textViewDescription.text = film.description
+            binding.textViewFilTitle.text = film.title
+            binding.textViewFilmDescription.text = film.description
+
+            /*
+                Set maxLines to textview description depend to maxheight
+             */
+            binding.textViewFilmDescription.viewTreeObserver.addOnGlobalLayoutListener {
+                val numberLinesVisibles = binding.textViewFilmDescription.height /
+                        binding.textViewFilmDescription.lineHeight
+                binding.textViewFilmDescription.maxLines = numberLinesVisibles
+            }
 
             setOnClickListener { listener.onClick(film, adapterPosition) }
         }

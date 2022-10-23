@@ -40,7 +40,11 @@ class GhibliRepository @Inject constructor (
         return emptyList()
     }
 
-    suspend fun updateFilmFromDatabase(id: String, title: String, original_title: String,
+    suspend fun deleteFilmByIdToDatabase(id : String) {
+        filmDao.deleteFilmById(id)
+    }
+
+    suspend fun updateFilmToDatabase(id: String, title: String, original_title: String,
                                        description: String, director: String, producer: String,
                                        release_date: Int, rt_score: Int) {
         filmDao.updateFilm(id, title, original_title, description, director, producer, release_date,

@@ -47,7 +47,7 @@
                         android:text="@string/editDataInformationMessage"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:gravity="center"
                         android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
@@ -56,8 +56,8 @@
 
                     <ImageView
                         android:id="@+id/imageViewFilm"
-                        android:layout_width="120dp"
-                        android:layout_height="200dp"
+                        android:layout_width="150dp"
+                        android:layout_height="230dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
                         android:contentDescription="@string/imageDescription"
@@ -72,10 +72,10 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:textAllCaps="true"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:visibility="visible"
                         android:text="@{film.title}"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
                         app:layout_constraintTop_toTopOf="@+id/imageViewFilm" />
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:text="@string/originalTitleString"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewOriginalTitle"
                         app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
                         app:layout_constraintTop_toTopOf="@+id/textViewOriginalTitle" />
@@ -111,7 +111,7 @@
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="10dp"
                         android:text="@{film.original_title}"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textViewOriginalTitleWord"
@@ -123,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewOriginalTitleWord"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/directorString"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewDirector"
                         app:layout_constraintStart_toStartOf="@+id/textViewOriginalTitleWord"
                         app:layout_constraintTop_toTopOf="@+id/textViewDirector" />
@@ -148,7 +148,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
                         android:text="@{film.director}"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textViewDirectorWord"
@@ -160,7 +160,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewDirectorWord"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -172,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/producerString"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewProducer"
                         app:layout_constraintStart_toStartOf="@+id/textViewDirectorWord"
                         app:layout_constraintTop_toTopOf="@+id/textViewProducer" />
@@ -182,10 +182,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
                         android:text="@{film.producer}"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textViewProducerWord"
@@ -197,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewProducerWord"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -210,9 +210,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@string/releaseDateString"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/textViewProducerWord"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewProducer" />
+                        app:layout_constraintTop_toBottomOf="@+id/textViewProducerWord" />
 
                     <TextView
                         android:id="@+id/textViewReleaseDate"
@@ -220,8 +220,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
-                        android:textSize="14sp"
                         android:text="@{String.valueOf(film.release_date)}"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewReleaseDateWord"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +237,7 @@
                         android:layout_marginEnd="10dp"
                         android:inputType="number"
                         android:maxLength="4"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewReleaseDateWord"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -250,7 +250,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="@string/scoreString"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/textViewReleaseDateWord"
                         app:layout_constraintTop_toBottomOf="@+id/textViewReleaseDateWord" />
 
@@ -259,8 +259,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:textSize="14sp"
                         android:text="@{String.valueOf(film.rt_score)}"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewScoreWord"
                         app:layout_constraintStart_toEndOf="@+id/textViewScoreWord"
@@ -271,7 +271,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="@string/percentScoreMax"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewScoreWord"
                         app:layout_constraintStart_toEndOf="@+id/textViewScore"
@@ -286,7 +286,7 @@
                         android:layout_marginEnd="10dp"
                         android:inputType="number"
                         android:maxLength="3"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textViewScoreWord"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -298,12 +298,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:text="@string/filmInformationString"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewPercentScoreMax" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewFilm" />
 
                     <TextView
                         android:id="@+id/textViewFilmDescription"
@@ -313,8 +313,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:ellipsize="end"
+                        android:textSize="18sp"
                         android:text="@{film.description}"
-                        android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textViewInformation" />
@@ -327,7 +327,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
                         android:visibility="gone"
-                        android:textSize="12sp"
+                        android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textViewInformation" />
@@ -350,7 +350,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/errorGetFilmInfo"
-                        android:textSize="14sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -379,5 +379,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
     </LinearLayout>
 </layout>

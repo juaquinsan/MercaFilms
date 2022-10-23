@@ -8,17 +8,20 @@
 
     <!-- Detail Activity -->
     <string name="filmInformationString">Film description</string>
-    <string name="errorGetFilmInfo">No info to show, please try again or check your internet connection</string>
+    <string name="errorGetFilmInfo">No information to show, please try again</string>
     <string name="originalTitleString">Original title:</string>
     <string name="directorString">Director:</string>
     <string name="producerString">Producer:</string>
     <string name="releaseDateString">Release date:</string>
     <string name="scoreString">Score:</string>
     <string name="missingInformation">N/A</string>
+    <string name="percentScoreMax">/100</string>
     <string name="editDataInformationMessage">You are editing the film information</string>
+    <string name="invalidScoreValueMessage">Invalid score. Introduce data between 0-100</string>
 
     <!-- Menu -->
     <string name="menuDeleteAll">Delete all</string>
+    <string name="menuDeleteFilm">Delete film</string>
     <string name="menuUpdate">Update database</string>
     <string name="menuEditInformation">Edit</string>
     <string name="menuSaveChanges">Save changes</string>
@@ -29,5 +32,15 @@
     <string name="alertDialogEditMessage">Your are editing the film information. If you leave this page, you lose your changes. Do you want to exit?</string>
     <string name="alertDialogEditPossitiveButton">Yes</string>
     <string name="alertDialogEditNegativeButton">No</string>
+    <string name="alertDialogDeleteFilmMessage">Do you want to delete the film?</string>
 
+    <!-- Key Instance State -->
+    <string name="StateEditingMode">StateEditingMode</string>
+    <string name="StateETTitle">StateETTitle</string>
+    <string name="StateETOriginalTitle">StateETOriginalTitle</string>
+    <string name="StateETDirector">StateETDirector</string>
+    <string name="StateETProducer">StateETProducer</string>
+    <string name="StateETReleaseDate">StateETReleaseDate</string>
+    <string name="StateETScore">StateETScore</string>
+    <string name="StateETDescription">StateETDescription</string>
 </resources>

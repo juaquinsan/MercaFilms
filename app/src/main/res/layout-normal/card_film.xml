@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:layout_margin="10dp"
+    android:layout_margin="15dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
@@ -35,7 +35,6 @@
             android:layout_marginEnd="10dp"
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewFilm"
             app:layout_constraintTop_toTopOf="@+id/imageViewFilm" />
@@ -49,7 +48,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="30dp"
             android:ellipsize="end"
-            android:textSize="12sp"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -64,7 +63,6 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
             android:text="@string/moreInfoString"
-            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewFilmDescription" />

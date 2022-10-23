@@ -1,10 +1,7 @@
 package com.joaquin.mercafilms.ui.viewmodels
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.joaquin.mercafilms.domain.DeleteAllFilmsUseCase
-import com.joaquin.mercafilms.domain.GetAllFilmsUseCase
-import com.joaquin.mercafilms.domain.GetFilmByIdUseCase
-import com.joaquin.mercafilms.domain.UpdateFilmUseCase
+import com.joaquin.mercafilms.domain.*
 import com.joaquin.mercafilms.domain.models.Film
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -30,6 +27,8 @@ class FilmsViewModelTest {
     @RelaxedMockK
     private lateinit var deleteAllFilmsUseCase: DeleteAllFilmsUseCase
     @RelaxedMockK
+    private lateinit var deleteFilmByIdUseCase: DeleteFilmByIdUseCase
+    @RelaxedMockK
     private lateinit var updateFilmUseCase: UpdateFilmUseCase
 
     private lateinit var filmsViewModel: FilmsViewModel
@@ -45,7 +44,7 @@ class FilmsViewModelTest {
         MockKAnnotations.init(this)
 
         filmsViewModel = FilmsViewModel(getAllFilmsUseCase, getFilmByIdUseCase,
-            deleteAllFilmsUseCase, updateFilmUseCase)
+            deleteAllFilmsUseCase, deleteFilmByIdUseCase, updateFilmUseCase)
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
 

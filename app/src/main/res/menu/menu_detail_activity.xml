@@ -11,6 +11,13 @@
         android:visible="true"/>
 
     <item
+        android:id="@+id/menu_delete_film"
+        android:title="@string/menuDeleteFilm"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_delete"
+        android:visible="true"/>
+
+    <item
         android:id="@+id/menu_discard_changes"
         android:title="@string/menuDiscardChanges"
         app:showAsAction="always"
